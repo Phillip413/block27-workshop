@@ -10,9 +10,10 @@ function SignUpForm () {
   async function handleSubmit(event) {
     event.preventDefault()
     // console.log("a small message from handlesubmit function!")
-
+    
+    
     try {
-
+      
       let response = await fetch ("https://fsa-jwt-practice.herokuapp.com/signup", {
         method: 'POST',
         headers: {
@@ -23,10 +24,12 @@ function SignUpForm () {
           password,
         })
       })
-
+      
       
       let json = await response.json()
       console.log(json)
+      
+      setToken(json.token)
 
     } catch(err){
       setError(error.message)
